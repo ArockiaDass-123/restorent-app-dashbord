@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DishCard = ({ dish, quantity, onUpdateCart }) => {
+const DishItem = ({ dish, quantity, onUpdateCart }) => {
     const {
         dish_name,
         dish_price,
@@ -14,11 +14,7 @@ const DishCard = ({ dish, quantity, onUpdateCart }) => {
         dish_id
     } = dish;
 
-    const isVeg = dish_Type === 2; // Based on image: Spinach salad (veg) is 2, Chicken soup (non-veg) is 1. Double check API.
-    // Actually, standard is 1: non-veg, 2: veg. Let me check the API data I read earlier.
-    // "Spinach Salad" dish_Type: 2 (veg)
-    // "Traditional New England Seafood Chowder" dish_Type: 1 (non-veg)
-    // This confirms 1 is non-veg, 2 is veg.
+    const isVeg = dish_Type === 2;
 
     return (
         <div className="dish-card">
@@ -29,19 +25,18 @@ const DishCard = ({ dish, quantity, onUpdateCart }) => {
                 </div>
 
                 {/* Info */}
-                <h2 className="dish-name">{dish_name}</h2>
+                <h1 className="dish-name">{dish_name}</h1>
                 <p className="dish-price">{dish_currency} {dish_price}</p>
                 <p className="dish-description">{dish_description}</p>
 
                 {/* Meta */}
                 <div className="dish-meta">
-                    {dish_Availability && (
+                    {dish_Availability ? (
                         <div className="quantity-controller">
                             <button
                                 type="button"
                                 className="quantity-btn"
                                 onClick={() => onUpdateCart(dish_id, -1)}
-                                disabled={quantity === 0}
                             >
                                 -
                             </button>
@@ -54,9 +49,7 @@ const DishCard = ({ dish, quantity, onUpdateCart }) => {
                                 +
                             </button>
                         </div>
-                    )}
-
-                    {!dish_Availability && (
+                    ) : (
                         <p className="availability-text">Not available</p>
                     )}
 
@@ -74,4 +67,4 @@ const DishCard = ({ dish, quantity, onUpdateCart }) => {
     );
 };
 
-export default DishCard;
+export default DishItem;

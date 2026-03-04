@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
-import MenuTabs from './components/MenuTabs';
+import TabItem from './components/TabItem';
 import DishList from './components/DishList';
 import './index.css';
 
@@ -59,11 +59,16 @@ const App = () => {
         restaurantName={restaurantData.restaurant_name}
         cartCount={totalCartCount}
       />
-      <MenuTabs
-        categories={restaurantData.table_menu_list}
-        activeCategoryId={activeCategoryId}
-        onSelectCategory={setActiveCategoryId}
-      />
+      <nav className="tabs-container">
+        {restaurantData.table_menu_list.map((category) => (
+          <TabItem
+            key={category.menu_category_id}
+            category={category}
+            isActive={category.menu_category_id === activeCategoryId}
+            onSelectCategory={setActiveCategoryId}
+          />
+        ))}
+      </nav>
       <DishList
         dishes={activeCategory?.category_dishes || []}
         cartItems={cartItems}
