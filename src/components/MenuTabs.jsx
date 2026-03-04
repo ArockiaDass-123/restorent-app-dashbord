@@ -4,13 +4,14 @@ const MenuTabs = ({ categories, activeCategoryId, onSelectCategory }) => {
     return (
         <nav className="tabs-container">
             {categories.map((category) => (
-                <div
+                <button
                     key={category.menu_category_id}
+                    type="button"
                     className={`tab ${category.menu_category_id === activeCategoryId ? 'active' : ''}`}
                     onClick={() => onSelectCategory(category.menu_category_id)}
                 >
                     {category.menu_category}
-                </div>
+                </button>
             ))}
         </nav>
     );

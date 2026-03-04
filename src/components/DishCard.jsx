@@ -38,14 +38,16 @@ const DishCard = ({ dish, quantity, onUpdateCart }) => {
                     {dish_Availability && (
                         <div className="quantity-controller">
                             <button
+                                type="button"
                                 className="quantity-btn"
                                 onClick={() => onUpdateCart(dish_id, -1)}
                                 disabled={quantity === 0}
                             >
                                 -
                             </button>
-                            <span className="quantity-value">{quantity}</span>
+                            <p className="quantity-value">{quantity}</p>
                             <button
+                                type="button"
                                 className="quantity-btn"
                                 onClick={() => onUpdateCart(dish_id, 1)}
                             >

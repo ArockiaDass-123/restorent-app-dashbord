@@ -50,14 +50,21 @@ body {
   font-weight: 500;
 }
 
-.cart-container {
-  position: relative;
-  cursor: pointer;
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.my-orders {
+  font-weight: 500;
+  color: var(--secondary-color);
+  margin-right: 1.5rem;
 }
 
 .cart-icon {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   color: var(--secondary-color);
 }
 
@@ -95,6 +102,10 @@ body {
   white-space: nowrap;
   font-weight: 500;
   color: var(--secondary-color);
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: 1rem;
   border-bottom: 2px solid transparent;
   transition: all 0.3s ease;
 }
